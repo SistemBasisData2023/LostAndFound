@@ -64,7 +64,7 @@ async function registerUser(username, email, password) {
     const insertQuery = 'INSERT INTO users (username, email, password, role) VALUES ($1, $2, $3, $4) RETURNING user_id';
     const values = [username, email, password, role];
     const result = await db.query(insertQuery, values);
-    return 'User created successfully';
+    return 'User created successfully' + result.rows[0].user_id;
   } catch (err) {
     console.log(err);
     throw err;
@@ -110,6 +110,19 @@ async function addFoundItem(item_name, description, location_found, date_found, 
 }
 
 
+// Show current user's profile
+async function showProfile(user_id) {
+  try {
+    const query = 'SELECT * FROM users WHERE user_id = $1';
+    const values = [user_id];
+    const result = await db.query(query, values);
+    const user = result.rows[0];
+    return user;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+}
 
 
 
@@ -151,6 +164,23 @@ async function getAllFound() {
   }
 }      
 
+// Delete a lost item
+async function deleteLostItem(lost_item_id, role) {
+  try {
+    if (role !== 'admin') {
+      const query = 'DELETE FROM lostitems WHERE lost_item_id = $1';
+      const values = [lost_item_id];
+      const result = await db.query(query, values);
+      return `Lost item with ID ${lost_item_id} deleted successfully`;
+    } else {
+      return res.status(403).send('You are not authorized to delete this item');
+    }
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+}
+
 
 
 module.exports = {
@@ -163,4 +193,7 @@ module.exports = {
   getAllLost,
   getAllFound,
   registerUser,
+  showProfile,
+  deleteLostItem,
+
 };

@@ -64,6 +64,19 @@ async function addFoundItem(req, res) {
   }
 }
 
+// Show user's profile
+async function showProfile(req, res) {
+  const user_id = req.session.user.user_id;
+  try {
+    const data = await db.showProfile(user_id);
+    res.send(data);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send('Internal Server Error');
+  }
+}
+
+
 // Get data from the 'users' table
 async function getAllUser(req, res) {
   try {
@@ -112,6 +125,23 @@ async function registerUser(req, res) {
   }
 }
 
+// Delete a lost item
+async function deleteLostItem(req, res) {
+  const { lost_item_id } = req.body;
+  const role = req.session.user.role;
+  try {
+    if (role !== 'admin') {
+      return res.status(403).send('Forbidden');
+    }
+    const data = await db.deleteLostItem(lost_item_id, role);
+    res.send(data);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send('Internal Server Error');
+  }
+}
+
+
 module.exports = {
   loginAdmin,
   loginUser,
@@ -122,4 +152,6 @@ module.exports = {
   getAllFound,
   getAllUser,
   registerUser,
+  showProfile,
+  deleteLostItem
 };
