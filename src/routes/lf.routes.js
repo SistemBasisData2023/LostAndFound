@@ -19,6 +19,8 @@ router.post('/admin/login', lfController.loginAdmin);
 router.get('/admin/getuser', lfController.getAllUser);
 // Delete a lost item
 router.delete('/admin/deletelost', lfController.deleteLostItem);
+// Delete a found item
+router.delete('/admin/deletefound', lfController.deleteFoundItem);
 
 //=======User Routes=======//
 // Login a user

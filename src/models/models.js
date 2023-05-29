@@ -165,22 +165,33 @@ async function getAllFound() {
 }      
 
 // Delete a lost item
-async function deleteLostItem(lost_item_id, role) {
+async function deleteLostItem(lost_item_id) {
   try {
-    if (role !== 'admin') {
+    
       const query = 'DELETE FROM lostitems WHERE lost_item_id = $1';
       const values = [lost_item_id];
       const result = await db.query(query, values);
       return `Lost item with ID ${lost_item_id} deleted successfully`;
-    } else {
-      return res.status(403).send('You are not authorized to delete this item');
-    }
+    
   } catch (err) {
     console.log(err);
     throw err;
   }
 }
 
+// Delete a found item
+async function deleteFoundItem(found_item_id) {
+  try {
+    const query = 'DELETE FROM founditems WHERE found_item_id = $1';
+    const values = [found_item_id];
+    const result = await db.query(query, values);
+    return `Found item with ID ${found_item_id} deleted successfully`;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+}
+    
 
 
 module.exports = {
@@ -195,5 +206,6 @@ module.exports = {
   registerUser,
   showProfile,
   deleteLostItem,
+  deleteFoundItem,
 
 };

@@ -79,7 +79,11 @@ async function showProfile(req, res) {
 
 // Get data from the 'users' table
 async function getAllUser(req, res) {
+  const role = req.session.user.role;
   try {
+    if (role !== 'admin') {
+      return res.status(403).send('Forbidden');
+    }
     const data = await db.getAllUser();
     res.send(data);
   } catch (err) {
@@ -141,6 +145,22 @@ async function deleteLostItem(req, res) {
   }
 }
 
+// Delete a found item
+async function deleteFoundItem(req, res) {
+  const { found_item_id } = req.body;
+  const role = req.session.user.role;
+  try {
+    if (role !== 'admin') {
+      return res.status(403).send('Forbidden');
+    }
+    const data = await db.deleteFoundItem(found_item_id, role);
+    res.send(data);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send('Internal Server Error');
+  }
+}
+
 
 module.exports = {
   loginAdmin,
@@ -153,5 +173,6 @@ module.exports = {
   getAllUser,
   registerUser,
   showProfile,
-  deleteLostItem
+  deleteLostItem,
+  deleteFoundItem
 };
