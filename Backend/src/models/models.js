@@ -23,22 +23,23 @@ async function loginAdmin(username, password, req, res) {
 
 // Login a user
 async function loginUser(username, password, req, res) {
-  const query = 'SELECT * FROM users WHERE username = $1 AND password = $2';
-  const values = [username, password];
-
+  const query = 'SELECT * FROM users WHERE username = $1 AND password = $2 AND role = $3';
+  const values = [username, password, 'user'];
   try {
     const result = await db.query(query, values);
     const user = result.rows[0];
-
     if (!user) {
       // User not found
       throw { statusCode: 404, message: 'Invalid username or password' };
     }
-
+    if (!user) {
+      // User not found
+      throw { statusCode: 404, message: 'Invalid username or password' };
+    }
     // Create session and store user data
     req.session.user = user;
     console.log(req.session.user);
-    res.send('User logged in successfully');
+    res.send(user);
   } catch (err) {
     console.error(err);
     res.status(404).send('Invalid username or password');
@@ -167,7 +168,6 @@ async function getAllFound() {
 // Delete a lost item
 async function deleteLostItem(lost_item_id) {
   try {
-    
       const query = 'DELETE FROM lostitems WHERE lost_item_id = $1';
       const values = [lost_item_id];
       const result = await db.query(query, values);

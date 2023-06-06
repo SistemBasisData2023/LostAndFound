@@ -1,0 +1,133 @@
+.titleSvg,
+.welcomeToOur {
+  align-self: stretch;
+  position: relative;
+}
+
+.welcomeToOur {
+  letter-spacing: 0.07em;
+  -webkit-text-stroke: 2px #525968;
+}
+
+.titleSvg {
+  max-width: 100%;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.welcomeToOurPageParent {
+  position: absolute;
+  top: 5vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4vh;
+}
+
+.svgIcon {
+  position: absolute;
+  top: 3.6vh;
+  left: 45vw;
+  width: 100%;
+  max-width: 45vw;
+  height: auto;
+  object-fit: cover;
+  opacity: 0.2;
+}
+
+.buttonButtonChild {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 4vw;
+  background-color: var(--color-darkslategray);
+}
+
+.register {
+  position: absolute;
+  top: 20vh;
+  left: 27.74%;
+  letter-spacing: 0.07em;
+}
+
+.buttonButton,
+.buttonButton1 {
+  position: absolute;
+  top: 7vh;
+  left: 8vw;
+  width: 16vw;
+  height: 9vh;
+  cursor: pointer;
+}
+
+.buttonButton1 {
+  top: 25vh;
+}
+
+.dontHaveAn {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  letter-spacing: 0.07em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 31vw;
+  opacity: 0.75;
+}
+
+.dontHaveAnAccountYetRegWrapper {
+  position: absolute;
+  top: 33vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 31vw;
+  height: 2vh;
+  color: var(--color-darkslategray);
+}
+
+.buttonButtonParent {
+  position: relative;
+  width: 32vw;
+  height: 24vh;
+}
+
+.weblandingPageInner {
+  position: absolute;
+  top: 12vh;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2vw;
+  background-color: var(--color-lightgray);
+  box-shadow: 0 1.6vh 2.8vh rgba(68, 76, 92, 0.45);
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  padding: 3.6vh 3.3vw;
+  align-items: flex-start;
+  justify-content: flex-start;
+  font-size: 5vw;
+  color: var(--color-lightgray);
+  font-family: var(--font-padauk);
+}
+
+.weblandingPage {
+  position: relative;
+  background-color: #f9f3e6;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  text-align: center;
+  font-size: 5.5vw;
+  color: var(--color-darkslategray);
+  font-family: var(--font-poiret-one);
+}

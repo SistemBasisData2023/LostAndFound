@@ -33,6 +33,7 @@ async function loginUser(req, res) {
 async function logoutUser(req, res) {
   try {
     req.session.destroy();
+    // 
     res.send('User logged out successfully');
   } catch (err) {
     console.error(err);
@@ -40,8 +41,7 @@ async function logoutUser(req, res) {
   }
 }
 async function addLostItem(req, res) {
-  const { item_name, description, location_lost, date_lost } = req.body;
-  const user_id = req.session.user.user_id;
+  const { item_name, description, location_lost, date_lost, user_id } = req.body;
   try {
     const data = await db.addLostItem(item_name, description, location_lost, date_lost, user_id);
     res.send(data);
@@ -53,8 +53,8 @@ async function addLostItem(req, res) {
 
 // Add a found item
 async function addFoundItem(req, res) {
-  const { item_name, description, location_found, date_found, location_submitted } = req.body;
-  const user_id = req.session.user.user_id;
+  const { item_name, description, location_found, date_found, location_submitted, user_id } = req.body;
+  
   try {
     const data = await db.addFoundItem(item_name, description, location_found, date_found, user_id, location_submitted);
     res.send(data);
@@ -79,11 +79,7 @@ async function showProfile(req, res) {
 
 // Get data from the 'users' table
 async function getAllUser(req, res) {
-  const role = req.session.user.role;
   try {
-    if (role !== 'admin') {
-      return res.status(403).send('Forbidden');
-    }
     const data = await db.getAllUser();
     res.send(data);
   } catch (err) {
@@ -132,12 +128,8 @@ async function registerUser(req, res) {
 // Delete a lost item
 async function deleteLostItem(req, res) {
   const { lost_item_id } = req.body;
-  const role = req.session.user.role;
   try {
-    if (role !== 'admin') {
-      return res.status(403).send('Forbidden');
-    }
-    const data = await db.deleteLostItem(lost_item_id, role);
+    const data = await db.deleteLostItem(lost_item_id);
     res.send(data);
   } catch (err) {
     console.log(err);
@@ -148,12 +140,8 @@ async function deleteLostItem(req, res) {
 // Delete a found item
 async function deleteFoundItem(req, res) {
   const { found_item_id } = req.body;
-  const role = req.session.user.role;
   try {
-    if (role !== 'admin') {
-      return res.status(403).send('Forbidden');
-    }
-    const data = await db.deleteFoundItem(found_item_id, role);
+    const data = await db.deleteFoundItem(found_item_id);
     res.send(data);
   } catch (err) {
     console.log(err);
