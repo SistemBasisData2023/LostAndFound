@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import Footer from '../../component/FooterPage';
+import Navbar from '../../component/Nvgbar';
 
 function AdmHomepage() {
   const navigate = useNavigate();
@@ -28,8 +29,10 @@ function AdmHomepage() {
 
 
   return (
+    
     <div className="flex flex-col bg-[#F9F3E6] min-h-screen">
-      <div id="top-section" className="grid grid-cols-1 md:grid-cols-2 flex-grow mt-4 md:-ml-[90px]">
+      <Navbar />
+      <div id="top-section" className="grid grid-cols-1 md:grid-cols-2 flex-grow mt-16 md:-ml-[90px]">
         <div className="flex flex-col justify-center items-center">
           <img src="../src/assets/adminhomepageLeft.png" alt="image1" className="ml-[20px] w-[520px]" />
         </div>

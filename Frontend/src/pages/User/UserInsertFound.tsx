@@ -86,6 +86,7 @@ function InsertFound() {
 
 
   return (
+    <>
     <div className="min-h-screen flex items-center justify-center bg-[#E5E5E5]">
     <div className="container mx-auto py-8">
         <img src="../src/assets/founditem.png" alt="undraw-Add-user-re-ipe3" className="mx-auto" />
@@ -177,6 +178,7 @@ function InsertFound() {
       )}
     </div>
     </div>
+    </>
   );
 }
 

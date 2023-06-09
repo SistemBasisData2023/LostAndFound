@@ -57,6 +57,7 @@ function RegisterPage() {
   };
 
   return (
+    <>
     <div className="relative">
       <img
         src="../src/assets/registerUserPage.png"
@@ -127,6 +128,7 @@ function RegisterPage() {
       )}
 
     </div>
+    </>
   );
 }
 

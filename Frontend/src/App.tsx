@@ -32,9 +32,6 @@ import InsertLost from './pages/User/UserInsertLost';
 function App() {
 
   return (
-    <div>
-      <Navbar />
-    <div>
      <Router>
      <Routes>
       
@@ -66,8 +63,7 @@ function App() {
 
      </Routes>
    </Router>
-</div>
-   </div>
+
   )
 }
 
