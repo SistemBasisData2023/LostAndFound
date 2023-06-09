@@ -1,45 +1,73 @@
-import { useState } from 'react'
-import React from "react";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import UserHome from './components/User/UserHome';
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css'
-import LoginForm from './components/User/UserLoginForm'
-import UserInsertLost from './components/User/UserInsertLost'
-import LandingPage from './components/LandingPage';
-import AdminLoginForm from './components/Admin/AdminLoginForm';
-import AdminHome from './components/Admin/AdminHome';
-import UserRegister from './components/User/UserRegister';
-import UserInsertFound from './components/User/UserInsertFound';
-import UserProfile from './components/User/UserProfile';
+import { useEffect, useState} from 'react';
+
+//LANDING PAGE and GENERAL COMPONENTS
+import LandingLogin from './pages/LandingLogin';
+import LandingPage from './pages/LandingPage';
+import Navbar from './component/Nvgbar';
+
+//USER PAGE
+import Register from './pages/User/RegisterPage';
+import LoginUser from './pages/User/UserLoginPage';
+import Homepage from './pages/User/UserHomepage';
+import InsertFound from './pages/User/UserInsertFound';
+
+import ListFound from './pages/User/UserListFound';
+import ListLost from './pages/User/UserListLost';
+
+//ADMIN PAGE
+import LoginAdmin from './pages/Admin/LoginAdminPage';
+import AdmHomepage from './pages/Admin/AdminHomepage';
+import GetUser from './pages/Admin/AdminGetUser';
+import AdminListFound from './pages/Admin/AdminListFound';
+import AdminListLost from './pages/Admin/AdminListLost';
+
+
+
+
 
 function App() {
+
   return (
-    <div style={{
-      backgroundColor: '#F9F3E6',
-      padding: '20px',
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      width: '100vw',
-      height: '100vh',
-    }}>
-    <h1>Lost & Found</h1>
-    <Router>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/user/home" element={<UserHome />} />
-        <Route path="/user/login" element={<LoginForm />} />
-        <Route path="/user/insertlost" element={<UserInsertLost />} />
-        <Route path="/admin/login" element={<AdminLoginForm />} />
-        <Route path="/admin/home" element={<AdminHome />} />
-        <Route path="/user/register" element={<UserRegister />} />
-        <Route path="/user/insertfound" element={<UserInsertFound />} />
-        <Route path="/user/profile" element={<UserProfile />} />
-        {/* Add more routes here */}
-      </Routes>
-    </Router>
-    </div>
-  );
+    <div>
+      <Navbar />
+    <div>
+     <Router>
+     <Routes>
+      
+       <Route path="/" element={<LandingPage /> } />
+       <Route path="/login" element={<LandingLogin />} />
+
+       {/* USER PAGE */}
+       <Route path="/user/login" element={<LoginUser />} />
+       <Route path="/user/register" element={<Register />} />
+       <Route path="/user/home" element={<Homepage /> } />
+       <Route path="/user/insertlost" element={<Homepage /> } />
+        <Route path="/user/insertfound" element={<InsertFound /> } />
+       <Route path="/user/listlost" element={<ListLost />} />
+       <Route path="/user/listfound" element={<ListFound />} />
+       <Route path="/user/profile" element={<ListFound />} />
+
+      {/* ADMIN PAGE */}
+       <Route path="/admin/login" element={<LoginAdmin />} />
+       <Route path="/admin/home" element={<AdmHomepage />} />
+       <Route path="/user/profile" element={<ListFound />} />
+       <Route path="/admin/getuser" element={<GetUser />} /> 
+      <Route path="/admin/getfound" element={<AdminListFound />} />
+      <Route path="/admin/getlost" element={<AdminListLost />} />
+
+
+
+
+
+
+     </Routes>
+   </Router>
+</div>
+   </div>
+  )
 }
 
 export default App
