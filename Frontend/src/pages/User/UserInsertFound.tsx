@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 
+
 const locations = ['FT', 'FF', 'Fpsi', 'FEB', 'FIB', 'FK'];
 
 function InsertFound() {
@@ -85,9 +86,9 @@ function InsertFound() {
 
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#444C5C]">
+    <div className="min-h-screen flex items-center justify-center bg-[#E5E5E5]">
     <div className="container mx-auto py-8">
-        <img src="../src/assets/lostitems.png" alt="undraw-Add-user-re-ipe3" className="mx-auto" />
+        <img src="../src/assets/founditem.png" alt="undraw-Add-user-re-ipe3" className="mx-auto" />
       <form onSubmit={handleSubmit} className="max-w-md mx-auto my-32">
         <div className="mb-4">
           <label htmlFor="item_name" className="block font-semibold mb-1">

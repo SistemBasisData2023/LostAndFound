@@ -8,6 +8,10 @@ function RegisterPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  const [isRegistered, setIsRegistered] = useState(false);
+
+  
+
   const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
   };
@@ -49,6 +53,7 @@ function RegisterPage() {
     setUsername('');
     setEmail('');
     setPassword('');
+    setIsRegistered(true);
   };
 
   return (
@@ -71,6 +76,7 @@ function RegisterPage() {
                 className="text-center w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:border-gray-900 shadow-md bg-[#F9F3E6] hover:bg-white"
                 placeholder="Email"
                 value={email}
+                required
                 onChange={handleEmailChange}
               />
             </div>
@@ -82,6 +88,7 @@ function RegisterPage() {
                 className="text-center w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:border-gray-900 shadow-md bg-[#F9F3E6] hover:bg-white"
                 placeholder="Username"
                 value={username}
+                required
                 onChange={handleUsernameChange}
               />
             </div>
@@ -93,6 +100,7 @@ function RegisterPage() {
                 className="text-center w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:border-gray-900 shadow-md bg-[#F9F3E6] hover:bg-white"
                 placeholder="Password"
                 value={password}
+                required
                 onChange={handlePasswordChange}
               />
             </div>
@@ -108,6 +116,16 @@ function RegisterPage() {
           </form>
         </div>
       </div>
+
+      {isRegistered && (
+        <div className="absolute top-0 left-0 w-screen h-screen flex justify-center items-center bg-gray-900 bg-opacity-50">
+          <div className="bg-white p-8 rounded-lg">
+            <h2 className="text-2xl font-thin font-serif text-center mb-6">Registration Successful!</h2>
+            <p className="text-center">Thank you for registering.</p>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }

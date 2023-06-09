@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import Footer from '../../component/FooterPage';
 
 function AdmHomepage() {
   const navigate = useNavigate();
@@ -67,36 +68,10 @@ function AdmHomepage() {
 </div>
 
 
-     {/* THIS IS THE BACK TO THE TOP FOOTER */}
-<div className="mt-0 md:col-span-2 bg-[#525968] h-[220px]">
-  <div className="flex justify-between items-center px-4 md:px-8">
-    <div>
-      <img src="../src/assets/webbyo15.png" alt="WebBy" className="ml-4 md:ml-[160px] mt-[-30px] md:mt-2 mr-6" />
-      <div className="flex gap-4 ml-4 md:ml-[170px] mt-[-30px] md:mt-8 mr-6">
-      <ul className="flex space-x-[20px]">
-            {MemberO15.map((member, index) => (
-              <li key={index}>
-                <a
-                  href={`https://www.github.com/${member.github}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-gray-500 text-2xl font-semibold"
-                >
-                  {member.nickname}
-                </a>
-              </li>
-            ))}
-          </ul>
-    </div>
-    </div>
-    
-    <div>
-      <a href="#top-section">
-        <img src="../src/assets/arrowup.png" alt="Image B" className="mt-[26px] md:mt-8 mr-4 md:mr-[90px] w-auto h-100%" />
-      </a>
-    </div>
+     {/* Footer Section */}
+  <div>
+    <Footer />
   </div>
-</div>
 
 
 
