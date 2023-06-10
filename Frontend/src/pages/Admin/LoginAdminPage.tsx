@@ -33,8 +33,20 @@ const handleSubmit = async (e: { preventDefault: () => void; }) => {
 
     // Login successful
     console.log("Login successful");
+    // Extract user and store it in localStorage
+    localStorage.setItem("user", JSON.stringify(user));
     // Extract user_id and store it in localStorage
     localStorage.setItem("user_id", user.user_id);
+
+    // Extract user information and store it in localStorage
+    localStorage.setItem("username", user.username);
+    localStorage.setItem("email", user.email);
+    localStorage.setItem("password", user.password);
+    
+    document.cookie = `user_id=${user.user_id}; path=/`;
+    document.cookie = `username=${user.username}; path=/`;
+    document.cookie = `email=${user.email}; path=/`;
+    
     setLoginError("");
     
     // Reset form fields
