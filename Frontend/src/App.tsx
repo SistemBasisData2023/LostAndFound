@@ -23,6 +23,7 @@ import AdmHomepage from './pages/Admin/AdminHomepage';
 import GetUser from './pages/Admin/AdminGetUser';
 import AdminListFound from './pages/Admin/AdminListFound';
 import AdminListLost from './pages/Admin/AdminListLost';
+import InsertLost from './pages/User/UserInsertLost';
 
 
 
@@ -31,9 +32,6 @@ import AdminListLost from './pages/Admin/AdminListLost';
 function App() {
 
   return (
-    <div>
-      <Navbar />
-    <div>
      <Router>
      <Routes>
       
@@ -44,7 +42,7 @@ function App() {
        <Route path="/user/login" element={<LoginUser />} />
        <Route path="/user/register" element={<Register />} />
        <Route path="/user/home" element={<Homepage /> } />
-       <Route path="/user/insertlost" element={<Homepage /> } />
+       <Route path="/user/insertlost" element={<InsertLost /> } />
         <Route path="/user/insertfound" element={<InsertFound /> } />
        <Route path="/user/listlost" element={<ListLost />} />
        <Route path="/user/listfound" element={<ListFound />} />
@@ -65,8 +63,7 @@ function App() {
 
      </Routes>
    </Router>
-</div>
-   </div>
+
   )
 }
 

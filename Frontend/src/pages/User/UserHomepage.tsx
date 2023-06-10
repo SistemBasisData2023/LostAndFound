@@ -1,10 +1,38 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import Footer from '../../component/FooterPage';
+
 
 function Homepage() {
   const navigate = useNavigate();
 
+  /*========= GET 5 LATEST DATA =========//
+
+  useEffect(() => {
+    const fetchLatestData = async () => {
+      try {
+        // Make an API request to fetch the latest data
+        const response = await axios.get('http://localhost:9000/user/listlost');
+
+        // Extract the latest 5 items from the response data
+        const latestItems = response.data.slice(0, 5);
+
+        // Set the latest data in the component state
+        setLatestData(latestItems);
+      } catch (error) {
+        // Handle error if the API request fails
+        console.error('Error fetching latest data:', error);
+      }
+    };
+
+    // Call the fetchLatestData function
+    fetchLatestData();
+  }, []);
+  */
+
+
+  //========= HANDLING CONST =========//
   const handleUserListFound = () => {
     navigate('/user/listfound');
   };
@@ -12,6 +40,17 @@ function Homepage() {
   const handleUserListLost = () => {
     navigate('/user/listlost');
   };
+
+  const handleUserInsertLost = () => {
+    navigate('/user/insertlost');
+  };
+
+  const handleUserInsertFound = () => {
+
+    navigate('/user/insertfound');
+  };
+
+  //========= FOOTER CONST =========//
 
   const MemberO15 = [
     { name: "Bintang Marsyuma Rakhasunu", nickname: "Bintang", github: "marsyuma" },
@@ -21,105 +60,127 @@ function Homepage() {
 
 
   return (
-    <div className="flex bg-[#F9F3E6] min-h-screen">
-      <div id="top-section" className="grid grid-cols-1 md:grid-cols-2 flex-grow mt-4 md:-ml-[90px]">
-        <div className="flex flex-col justify-center items-center">
-          <img src="../src/assets/homepageLeft.png" alt="Image 1" className="ml-[20px] w-[520px]" />
-        </div>
-        <div className="flex flex-col justify-center items-center">
-          <img src="../src/assets/title.png" alt="Image 2" className="-mt-[40px] -ml-[100px] w-[580px] h-[200px]" />
-          <p className="text-gray-500 italic -ml-[120px] align-middle mt-12 pl-4 pr-4 font-serif max-w-[600px]">
-            "Lost and Found is your go-to platform for reporting lost or found items within the University of Indonesia campus.
-            We understand how frustrating it can be to misplace something valuable
-            or come across a lost item without knowing how to help.
-            That motivates us to create a centralized hub where you can easily report your checkpoints and access vital information."
-          </p>
-        </div>
-
-        {/* THIS IS THE LOST ITEM FORM PAGE */}
-        <div className="mt-12 md:col-span-2 bg-[#444C5C] min-h-screen">
-          <div className="flex flex-col justify-center items-center">
-            <div className="flex flex-col justify-center items-center w-[420px] h-[450px] md:w-[460px] bg-[#3E4A58] rounded-xl mt-[60px] md:-ml-[600px] shadow-md shadow-gray-900 border-[#CF9D95] border-[1px]">
-              <div className="flex flex-col items-center gap-7">
-                <img src="../src/assets/topper.png" alt="Image 3" className="w-1/2" />
-                <input type="text" placeholder="Item Lost" className="mt-6 px-4 py-3 border border-gray-300 rounded-full w-full bg-[#F9F3E6] hover:bg-gray-400" />
-                <input type="password" placeholder="Place" className="mt-6 mb-4 px-4 py-3 border border-gray-300 rounded-full w-full bg-[#F9F3E6] hover:bg-gray-400" />
-                <div>
-                  <button className="flex bg-[#CF9D95] p-4 w-[300px] rounded-full items-center justify-center border border-black hover:bg-[#E2C4B9] font-serif">
-                    I lost an Item
-                  </button>
-                </div>
-              </div>
-            </div>
-            <img src="../src/assets/itemLosttitle.png" alt="reportLostItem" className="ml-[600px] w-[600px] -mt-[300px]" />
-            <p className="text-[#DDBBA7] italic ml-[572px] align-middle mt-12 pl-4 pr-4 font-serif max-w-[600px]">
-              Welcome to our Lost Item Page,
-              where you can find information and assistance regarding lost items.
-              We understand how distressing it can be to lose something valuable or sentimental,
-              and our page is here to help you navigate the process of recovering your lost item.
-            </p>
-            <button onClick={handleUserListLost}
-            className="px-2 py-2 bg-[#F9F3E6] hover:bg-gray-400 text-gray-900 rounded-full mt-12 -mr-[300px] w-[300px] h-[50px]"> 
-            SEE FOR ITEM LOST LIST
-            </button>
-          </div>
-        </div>
-
-        {/* THIS IS THE FOUND ITEM FORM PAGE */}
-        <div className="mt-12 md:col-span-2 bg-[#F9F3E6] min-h-screen">
-          <div className="flex flex-col justify-center items-center">
-            <div className="flex flex-col justify-center items-center w-[420px] h-[450px] md:w-[460px] bg-[#DDBBA7] rounded-xl mt-[60px] md:-ml-[600px] shadow-md shadow-gray-900 border-[#444C5C] border-[1px]">
-              <div className="flex flex-col items-center gap-7">
-                <img src="../src/assets/topper.png" alt="Image 3" className="w-1/2" />
-                <input type="text" placeholder="Item Lost" className="mt-6 px-4 py-3 border border-gray-300 rounded-full w-full bg-[#F9F3E6] hover:bg-[#AC8873]" />
-                <input type="password" placeholder="Place" className="mt-6 mb-4 px-4 py-3 border border-gray-300 rounded-full w-full bg-[#F9F3E6] hover:bg-[#AC8873]" />
-                <div>
-                  <button className="flex bg-[#444C5C] p-4 w-[300px] rounded-full items-center justify-center text-white border border-black hover:bg-[#E2C4B9] font-serif">
-                    I Found an Item
-                  </button>
-                </div>
-              </div>
-            </div>
-            <img src="../src/assets/itemFoundtitle.png" alt="reportLostItem" className="ml-[600px] w-[600px] -mt-[300px]" />
-            <p className="text-gray-700 italic ml-[572px] align-middle mt-12 pl-4 pr-4 font-serif max-w-[600px]">
-              Welcome to our Found Item Page,
-              where you can provide information about items you have found and help reunite them with their owners.
-              We appreciate your honesty and willingness to assist in the recovery process.
-            </p>
-            <button onClick={handleUserListFound}
-            className="px-2 py-2 bg-[#525968] hover:bg-gray-400 text-white rounded-full mt-12 -mr-[300px] w-[300px] h-[50px]"> 
-            SEE FOR ITEM FOUND LIST
-            </button>
-          </div>
-        </div>
-
-        {/* THIS IS THE GO TO MY PROFILE PAGE */}
-        <div className="mt-12 md:col-span-2 bg-[#C2D4D8] h-[500px]">
-          <div>
-            <img src="../src/assets/gotomyprofile.png" alt="GoToMyProfile" className="w-[500px] ml-[250px] mt-[180px] mr-6" />
-            <button className="flex bg-[#F9F3E6] p-4 w-[300px] rounded-full items-center justify-center text-gray-600  hover:bg-[#E2C4B9] font-serif ml-[340px] mt-[80px] shadow-md shadow-gray-500">
-              CLICK HERE
-            </button>
-            <img src="../src/assets/biggericonuser.png" alt="UserIcon" className="ml-[900px] -mt-[280px]" />
-          </div>
-        </div>
-
-       {/* THIS IS THE BACK TO THE TOP FOOTER */}
-       <div className="mt-0 md:col-span-2 bg-[#525968] h-[220px]">
-       <div className="flex justify-between items-center px-4 md:px-8">
-      <div>
-              <img src="../src/assets/webbyo15.png" alt="WebBy" className="ml-[160px] mt-[50px] mr-6" />
-            </div>
-            <div>
-              <a href="#top-section">
-                <img src="../src/assets/arrowup.png" alt="Image B" className="mt-[26px] mr-[250px]" />
-              </a>
-            </div>
-          </div>
-        </div>
+    <div className="flex flex-col bg-[#F9F3E6] min-h-screen">
+    <div id="top-section" className="grid grid-cols-1 md:grid-cols-2 flex-grow mt-4 md:-ml-[90px]">
+      <div className="flex flex-col justify-center items-center">
+        <img src="../src/assets/homepageLeft.png" alt="Image 1" className="ml-[20px] w-full max-w-[520px]" />
+      </div>
+      <div className="flex flex-col justify-center items-center">
+        <img src="../src/assets/title.png" alt="Image 2" className="mt-[40px] w-full max-w-[580px] h-[200px]" />
+        <p className="text-gray-500 italic ml-[10px] mt-12 pl-4 pr-4 font-serif max-w-[600px]">
+          "Lost and Found is your go-to platform for reporting lost or found items within the University of Indonesia campus.
+          We understand how frustrating it can be to misplace something valuable
+          or come across a lost item without knowing how to help.
+          That motivates us to create a centralized hub where you can easily report your checkpoints and access vital information."
+        </p>
       </div>
     </div>
-  );
+
+    {/* User Activity Section */}
+<div className="mt-12 md:col-span-2 bg-[#444C5C]">
+  <p className="text-white font-bold text-4xl text-center mt-16 mb-10 font-serif">User Activity</p>
+  <div className="flex justify-center items-center">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 pb-36 px-36"> 
+
+      {/* Insert Lost Item */}
+      <div className="flex flex-col justify-center items-center bg-white rounded-xl shadow-md cursor-pointer square-container hover:shadow-lg transform hover:-translate-y-1 hover:scale-105 transition-all duration-300">
+        <img src="../src/assets/ostroke.png" alt="Insert Lost Item" className="w-full h-full object-cover" />
+        <p className="text-gray-700 font-semibold mt-4">Insert Lost Item</p>
+        <button
+          onClick={() => {
+            // Handle redirect to '/user/insertlost'
+            navigate('/user/insertlost');
+          }}
+          className="bg-gray-300 text-gray-800 font-bold py-2 px-8 rounded-t-full mt-4 transition-all duration-300 hover:bg-gray-400"
+        >
+          Go
+        </button>
+      </div>
+
+      {/* Insert Found Item */}
+      <div className="flex flex-col justify-center items-center bg-white rounded-xl shadow-md cursor-pointer square-container hover:shadow-lg transform hover:-translate-y-1 hover:scale-105 transition-all duration-300">
+        <img src="../src/assets/insertFoundItem.png" alt="Insert Found Item" className="w-full h-full object-cover" />
+        <p className="text-gray-700 font-semibold mt-4">Insert Found Item</p>
+        <button
+          onClick={() => {
+            // Handle redirect to '/user/found'
+            navigate('/user/insertfound');
+          }}
+          className="bg-gray-300 text-gray-800 font-bold py-2 px-8 rounded-t-full mt-4 transition-all duration-300 hover:bg-gray-400"
+        >
+          Go
+        </button>
+      </div>
+
+      {/* See Lost Items */}
+      <div className="flex flex-col justify-center items-center bg-white rounded-xl shadow-md cursor-pointer square-container hover:shadow-lg transform hover:-translate-y-1 hover:scale-105 transition-all duration-300">
+        <img src="../src/assets/seeLostItems.png" alt="See Lost Items" className="w-full h-full object-cover" />
+        <p className="text-gray-700 font-semibold mt-4">See Lost Items</p>
+        <button
+          onClick={() => {
+            // Handle redirect to '/user/listlost'
+            navigate('/user/listlost');
+          }}
+          className="bg-gray-300 text-gray-800 font-bold py-2 px-8 rounded-t-full mt-4 transition-all duration-300 hover:bg-gray-400"
+        >
+          Go
+        </button>
+      </div>
+
+      {/* See Found Items */}
+      <div className="flex flex-col justify-center items-center bg-white rounded-xl shadow-md cursor-pointer square-container hover:shadow-lg transform hover:-translate-y-1 hover:scale-105 transition-all duration-300">
+        <img src="../src/assets/seeFoundItems.png" alt="See Found Items" className="w-full h-full object-cover" />
+        <p className="text-gray-700 font-semibold mt-4">See Found Items</p>
+        <button
+          onClick={() => {
+            // Handle redirect to '/user/listfound'
+            navigate('/user/listfound');
+          }}
+          className="bg-gray-300 text-gray-800 font-bold py-2 px-8 rounded-t-full mt-4 transition-all duration-300 hover:bg-gray-400"
+        >
+          Go
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+    
+{/* Go to My Profile Page */}
+<div className="md:col-span-2 bg-[#C2D4D8] flex flex-col items-center sm:flex-row sm:justify-between" style={{ minHeight: '65vh' }}>
+  <div className="flex flex-col items-center">
+    <img src="../src/assets/gotomyprofile.png" alt="GoToMyProfile" className="w-[90%] max-w-[1200px] sm:w-[80%] md:w-[70%] lg:w-[60%] h-auto sm:h-[70%] md:h-[80%] lg:h-[90%] mt-6 sm:mt-0" />
+    <button className="flex bg-[#F9F3E6] p-4 w-[80%] sm:w-[60%] md:w-[40%] lg:w-[40%] rounded-full items-center justify-center text-gray-600 hover:bg-[#E2C4B9] font-serif mt-8 sm:mt-12 shadow-md shadow-gray-500">
+      CLICK HERE
+    </button>
+  </div>
+  <img src="../src/assets/biggericonuser.png" alt="UserIcon" className="w-[80%] max-w-[300px] sm:w-[60%] md:w-[40%] lg:w-[30%] h-auto sm:h-[70%] md:h-[80%] lg:h-[90%] mt-8 sm:mt-4 mx-32" />
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  {/* Footer Section */}
+  <div>
+    <Footer />
+  </div>
+
+  </div>
+);
+
 }
 
 export default Homepage;

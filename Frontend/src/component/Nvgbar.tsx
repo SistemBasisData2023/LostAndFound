@@ -1,8 +1,21 @@
 import React from "react";
 
-const Navbar: React.FC = () => {
+
+
+
+function Navbar() {
+
+  const handleLogout = () => {
+    // Clear the session storage or local storage flag
+    sessionStorage.removeItem("isLoggedIn"); // Or localStorage.removeItem("isLoggedIn")
+    // Redirect to the login page
+    localStorage.removeItem('user_id');
+    window.location.href = '/login';
+  };
+  
+  
   return (
-    <nav className="bg-[#D1CCC2] shadow-grey shadow-md">
+    <nav className="bg-[#F9F3E6] shadow-grey shadow-md rounded-b-2xl w-screen fixed">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
@@ -28,7 +41,8 @@ const Navbar: React.FC = () => {
               LOST
             </a>
             <a
-              href="#"
+             href="/login"
+             onClick={handleLogout}
               className="text-gray-700 hover:bg-[#D4A5A5] hover:text-white px-3 py-2 rounded-md text-sm font-medium"
             >
               LOGOUT

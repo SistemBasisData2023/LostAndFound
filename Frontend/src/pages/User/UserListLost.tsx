@@ -24,6 +24,9 @@ function ListFound(){
     }
   };
   
+  const handleBackButton = () => {
+    window.location.href = '/user/home';
+  };
 
   useEffect(() => {
     getTodos();
@@ -69,6 +72,12 @@ function ListFound(){
           </div>
         ))}
       </div>
+
+      <button onClick={handleBackButton}
+      className="py-4 mx-28 mb-12 items-center w-48 bg-gray-500 hover:bg-gray-700 rounded-full font-semibold">
+        Back to Home
+      </button>
+
     </div>
   );
   

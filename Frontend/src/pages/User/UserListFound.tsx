@@ -50,9 +50,9 @@ function ListFound(){
         className="pt-8 mx-28 items-center w-96"
       />
 
-<p className="mx-28 mt-8 h- bg-blue-200 text-gray-800 px-4 py-2 rounded-full inline-block relative">
+      <p className="mx-28 mt-8 h- bg-[#E5E5E5] text-gray-800 px-4 py-2 rounded-full inline-block relative">
         Maybe one of these is yours...
-      <span className="absolute w-3 h-3 bg-blue-200 bottom-0 left-1/2 transform -translate-x-1/2 rotate-45"></span>
+      <span className="absolute w-5 h-5 bg-[#E5E5E5] bottom-0 left-1/2 transform -translate-x-[90px] translate-y-[8px] rotate-45"></span>
       </p>
 
       <div className="mx-28 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 pt-8 pb-28">

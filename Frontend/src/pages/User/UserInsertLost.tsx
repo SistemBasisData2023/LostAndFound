@@ -121,7 +121,6 @@ function InsertLost() {
           <select
             id="location_found"
             name="location_found"
-            value={location_lost}
             onChange={handleLocationFoundChange}
             className="w-full px-4 py-2 rounded border"
           >
