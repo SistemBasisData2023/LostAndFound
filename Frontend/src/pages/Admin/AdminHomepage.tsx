@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import Footer from '../../component/FooterPage';
 import Navbar from '../../component/Nvgbar';
 import { useEffect } from 'react';
+import NavbarAdmin from '../../component/NvgbarAdmin';
 
 function AdmHomepage() {
   const navigate = useNavigate();
@@ -32,18 +33,13 @@ function AdmHomepage() {
     navigate('/admin/profile');
   };
 
-  
-    const MemberO15 = [
-      { name: "Bintang Marsyuma Rakhasunu", nickname: "Bintang", github: "marsyuma" },
-      { name: "Fayza Nirwasita", nickname: "Fay", github: "fn95" },
-      { name: "Azzah Angeli", nickname: "Azzah", github: "azzahangely" },
-    ];
+
 
 
   return (
     
     <div className="flex flex-col bg-[#F9F3E6] min-h-screen">
-      <Navbar />
+      <NavbarAdmin />
       <div id="top-section" className="grid grid-cols-1 md:grid-cols-2 flex-grow mt-16 md:-ml-[90px]">
         <div className="flex flex-col justify-center items-center">
           <img src="../src/assets/adminhomepageLeft.png" alt="image1" className="ml-[20px] w-[520px]" />
@@ -68,18 +64,17 @@ function AdmHomepage() {
         </button>
       </div>
   
-   {/* THIS IS THE GO TO MY PROFILE PAGE */}
-<div className="md:col-span-2 bg-[#C2D4D8] h-[500px] flex flex-col items-center">
-  <div className="w-full max-w-[1024px] mx-auto">
-    <div className="flex items-start">
-      <img src="../src/assets/gotomyprofile.png" alt="GoToMyProfile" className="w-1/2 -ml-[20px] mt-32" />
-      <img src="../src/assets/biggericonuser.png" alt="UserIcon" className="w-auto ml-auto mt-4" />
-    </div>
-    <button onClick={handleAdminProfile} 
-    className="flex bg-[#F9F3E6] px-28 py-4 rounded-full items-center justify-center text-gray-600 hover:bg-[#E2C4B9] font-bold -mt-[120px] mx-10 shadow-lg ">
+   {/* Go to My Profile Page */}
+<div className="md:col-span-2 bg-[#C2D4D8] flex flex-col items-center sm:flex-row sm:justify-between" style={{ minHeight: '65vh' }}>
+  <div className="flex flex-col items-center">
+    <img src="../src/assets/gotomyprofile.png" alt="GoToMyProfile" className="w-[90%] max-w-[1200px] sm:w-[80%] md:w-[70%] lg:w-[60%] h-auto sm:h-[70%] md:h-[80%] lg:h-[90%] mt-6 sm:mt-0" />
+    <button 
+      onClick={handleAdminProfile}
+    className="flex bg-[#F9F3E6] p-4 w-[80%] sm:w-[60%] md:w-[40%] lg:w-[40%] rounded-full items-center justify-center text-gray-600 hover:bg-[#E2C4B9] font-serif mt-8 sm:mt-12 shadow-md shadow-gray-500">
       CLICK HERE
     </button>
   </div>
+  <img src="../src/assets/biggericonuser.png" alt="UserIcon" className="w-[80%] max-w-[300px] sm:w-[60%] md:w-[40%] lg:w-[30%] h-auto sm:h-[70%] md:h-[80%] lg:h-[90%] mt-8 sm:mt-4 mx-32" />
 </div>
 
 

@@ -1,12 +1,9 @@
-import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css'
-import { useEffect, useState} from 'react';
 
 //LANDING PAGE and GENERAL COMPONENTS
 import LandingLogin from './pages/LandingLogin';
 import LandingPage from './pages/LandingPage';
-import Navbar from './component/Nvgbar';
 
 //USER PAGE
 import Register from './pages/User/RegisterPage';
@@ -28,18 +25,15 @@ import UserProfile from './pages/User/UserProfile';
 import AdminProfile from './pages/Admin/AdminProfile';
 
 
-
-
-
-
-
 function App() {
 
   return (
      <Router>
      <Routes>
       
-       <Route path="/" element={<LandingPage /> } />
+       <Route path="/" element={<LandingPage /> } 
+
+       />
        <Route path="/login" element={<LandingLogin />} />
  
 
@@ -60,12 +54,6 @@ function App() {
        <Route path="/admin/getuser" element={<GetUser />} /> 
       <Route path="/admin/getfound" element={<AdminListFound />} />
       <Route path="/admin/getlost" element={<AdminListLost />} />
-
-
-
-
-
-
      </Routes>
    </Router>
 

@@ -94,7 +94,7 @@ const [username, setUsername] = useState('');
               onChange={handlePasswordChange}
             />
 
-            <p className="text-justify mb-4">
+            <p className="text-center mb-0">
               Don't have an account?{" "}
               <Link to="/user/register" className="text-gray-700">
                 Register Here

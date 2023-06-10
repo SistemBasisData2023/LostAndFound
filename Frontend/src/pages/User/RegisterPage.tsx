@@ -107,10 +107,17 @@ function RegisterPage() {
               />
             </div>
         
-            <div className="mb-4 flex justify-center">
+            <div className="mb-4 flex justify-center gap-8">
+              
+              <button
+                onClick={() => navigate('/user/login')}
+                className="px-4 py-2 bg-gray-300 hover:bg-gray-500  hover:text-white text-[#444C5C] font-semibold rounded-full w-[280px]"
+              >
+                BACK
+              </button>
               <button
                 type="submit"
-                className="px-4 py-2 bg-blue-300 hover:bg-gray-500 text-[#444C5C] font-semibold rounded-full w-[280px]"
+                className="px-4 py-2 bg-blue-300 hover:bg-gray-500   hover:text-white text-[#444C5C] font-semibold rounded-full w-[280px]"
               >
                 REGISTER
               </button>

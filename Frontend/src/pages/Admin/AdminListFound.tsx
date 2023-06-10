@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import NavbarAdmin from '../../component/NvgbarAdmin';
 
 
 function AdminListFound() {
@@ -47,6 +48,8 @@ const getTodos= async () => {
 
    
 return (
+  <div>
+    <NavbarAdmin />
   <div className="bg-[#C2D4D8] min-h-screen flex flex-col items-center py-12">
     <img src="../src/assets/founditemlist.png" alt="userlisttitle" className="mt-8 mb-8 mx-4 items-end self-end" />
     <div className="flex-grow w-screen px-2 md:px-16">
@@ -91,6 +94,7 @@ return (
         </button>
       </div>
     </div>
+  </div>
   </div>
 );
 

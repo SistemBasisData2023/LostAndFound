@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import NavbarAdmin from '../../component/NvgbarAdmin';
 
 
 function AdminListLost() {
@@ -7,7 +8,7 @@ function AdminListLost() {
 
 const getTodos= async () => {
     try {
-        const response = await fetch("http://localhost:9000/getfound", {
+        const response = await fetch("http://localhost:9000/getlost", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -24,10 +25,10 @@ const getTodos= async () => {
     }
     };
 
-    const handleDelete = async (found_item_id: any) => {
+    const handleDelete = async (lost_item_id: any) => {
       try {
-        await axios.delete("http://localhost:9000/admin/deletefound", {
-          data: { found_item_id },
+        await axios.delete("http://localhost:9000/admin/deletelost", {
+          data: { lost_item_id },
         });
     
         // Refresh the page after deletion
@@ -47,10 +48,13 @@ const getTodos= async () => {
 
    
   return (
-    <div className="bg-[#C2D4D8] min-h-screen flex flex-col items-center">
-      <img src="../src/assets/founditemlist.png" alt="userlisttitle" className="mt-8 mb-8 items-end self-end" />
-      <div className="flex-grow w-screen px-16">
-        <table className="table-auto mb-12 w-full bg-[#F9F3E6] rounded-xl">
+    <div>
+      <NavbarAdmin />
+    <div className="bg-[#C2D4D8] min-h-screen flex flex-col items-center py-12">
+      <img src="../src/assets/lostitemlist.png" alt="userlisttitle" className="mt-8 mb-8 items-end self-end" />
+      <div className="flex-grow w-screen px-2 md:px-16">
+      <div className="overflow-x-auto">
+        <table className="table-auto py-8 mb-12 w-full bg-[#F9F3E6] rounded-xl">
           <thead>
           <tr>
               <th className="px-4 py-2">ID</th>
@@ -58,7 +62,6 @@ const getTodos= async () => {
               <th className="px-4 py-2">Description</th>
               <th className="px-4 py-2">Location Lost</th>
               <th className="px-4 py-2">Date Lost</th>
-              <th className="px-4 py-2">Location Submitted</th>
               <th className="px-4 py-2">User ID</th>
               <th className="px-4 py-2">Action</th>
             </tr>
@@ -71,7 +74,6 @@ const getTodos= async () => {
                 <td className="px-4 py-2 text-center">{todo.description}</td>
                 <td className="px-4 py-2 text-center">{todo.location_lost}</td>
                 <td className="px-4 py-2 text-center">{todo.date_lost}</td>
-                <td className="px-4 py-2 text-center">{todo.location_submitted}</td>
                 <td className="px-4 py-2 text-center">{todo.user_id}</td>
                 <td className="px-4 py-2">
                   <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" 
@@ -85,11 +87,14 @@ const getTodos= async () => {
         </table>
 
         <button onClick={handleBackButton}
-        className="bg-gray-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+        className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
           BACK
         </button>
+
+        </div>
         
       </div>
+    </div>
     </div>
   );
   

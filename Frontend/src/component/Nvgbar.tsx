@@ -1,6 +1,4 @@
 import { Link, useNavigate } from 'react-router-dom';
-import React, { useState } from 'react';
-import axios from 'axios';
 
 
 function Navbar() {
@@ -23,33 +21,33 @@ function Navbar() {
     navigate('/login');
   };
   
-  
   return (
     <nav className="bg-[#F9F3E6] shadow-grey shadow-md rounded-b-2xl w-screen sticky">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
-            <a href ="#">
+            <Link
+            to="/user/profile">
             <img
               className="h-8 w-8"
               src="..\src\assets\navbarUser.png"
               alt="profile"
             />
-            </a>
+            </Link>
           </div>
           <div className="flex">
-            <a
-              href="#"
+            <Link 
+            to="/user/insertfound"
               className="text-gray-700 hover:bg-[#D4A5A5] hover:text-white px-3 py-2 rounded-md text-sm font-medium"
             >
               FOUND
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link 
+            to="/user/insertfound"
               className="text-gray-700 hover:bg-[#D4A5A5] hover:text-white px-3 py-2 rounded-md text-sm font-medium"
             >
               LOST
-            </a>
+            </Link>
             <a
              href="/login"
              onClick={handleLogout}

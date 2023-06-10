@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import Navbar from '../../component/Nvgbar';
 
 
 function ListFound(){
@@ -43,7 +44,10 @@ function ListFound(){
   };
 
   return (
-    <div className="bg-[#CF9D95] min-h-screen">
+    <div className="bg-[#CF9D95]">
+      <Navbar />
+   
+    <div className="min-h-screen">
       <img
         src="../src/assets/recentposts.png"
         alt="recentpost"
@@ -55,7 +59,7 @@ function ListFound(){
       <span className="absolute w-5 h-5 bg-[#E5E5E5] bottom-0 left-1/2 transform -translate-x-[90px] translate-y-[8px] rotate-45"></span>
       </p>
 
-      <div className="mx-28 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 pt-8 pb-28">
+      <div className="mx-28 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 pt-8 pb-16 mb-0">
         {todos.map((todo) => (
           <div
             key={todo.lost_item_id}
@@ -84,7 +88,7 @@ function ListFound(){
               </p>
               <button
                 onClick={() => handleRequestReturn(todo.item_name)}
-                className="mt-4 bg-blue-300 text-white py-2 px-4 rounded hover:bg-[#C5C6C7] mx-auto"
+                className="mt-4 bg-blue-200 text-black  py-2 px-4 rounded hover:bg-blue-900 hover:text-white mx-auto mb-6"
               >
                 Request for Return
               </button>
@@ -97,6 +101,7 @@ function ListFound(){
       className="py-4 mx-28 mb-12 items-center w-48 bg-gray-500 hover:bg-gray-700 rounded-full font-semibold">
         Back to Home
       </button>
+    </div>
     </div>
   );
   

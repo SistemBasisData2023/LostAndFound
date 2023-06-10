@@ -66,14 +66,6 @@ function Homepage() {
   };
 
 
-  //========= FOOTER CONST =========//
-
-  const MemberO15 = [
-    { name: "Bintang Marsyuma Rakhasunu", nickname: "Bintang", github: "marsyuma" },
-    { name: "Fayza Nirwasita", nickname: "Fay", github: "fn95" },
-    { name: "Azzah Angeli", nickname: "Azzah", github: "azzahangely" },
-  ];
-
 
   return (
     <div className="flex flex-col bg-[#F9F3E6] min-h-screen">
