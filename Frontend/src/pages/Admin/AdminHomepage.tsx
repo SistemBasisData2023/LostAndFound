@@ -1,9 +1,21 @@
 import { useNavigate } from 'react-router-dom';
 import Footer from '../../component/FooterPage';
 import Navbar from '../../component/Nvgbar';
+import { useEffect } from 'react';
 
 function AdmHomepage() {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkCookiesAvailability = () => {
+      const areCookiesAvailable = document.cookie.length > 0;
+      if (!areCookiesAvailable) {
+        navigate('/');
+      }
+    };
+
+    checkCookiesAvailability();
+  }, [navigate]);
 
   const handleAdminListFound = () => {
     navigate('/admin/getfound');

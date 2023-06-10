@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import Navbar from '../../component/Nvgbar';
 import Footer from '../../component/FooterPage';
 
@@ -9,7 +10,7 @@ const locations = ['FT', 'FF', 'Fpsi', 'FEB', 'FIB', 'FK'];
 
 function InsertFound() {
 
-
+  
   const [item_name, setItemName] = useState('');
   const [description, setDescription] = useState('');
   const [location_found, setLocationFound] = useState('');
@@ -17,7 +18,18 @@ function InsertFound() {
   const currentDate = new Date().toISOString().split('T')[0];
   const [location_submitted, setLocationSubmitted] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
+  
+  const navigate = useNavigate();
+  useEffect(() => {
+    const checkCookiesAvailability = () => {
+      const areCookiesAvailable = document.cookie.length > 0;
+      if (!areCookiesAvailable) {
+        navigate('/');
+      }
+    };
 
+    checkCookiesAvailability();
+  }, [navigate]);
 
   const handleBack = () => {
     window.location.href = '/user/home';

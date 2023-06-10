@@ -1,21 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Navbar from '../../component/Nvgbar';
 import Footer from '../../component/FooterPage';
+import { useNavigate } from 'react-router-dom';
 
-
-const locations = ['FT', 'FF', 'Fpsi', 'FEB', 'FIB', 'FK'];
 
 function InsertLost() {
 
 
   const [item_name, setItemName] = useState('');
   const [description, setDescription] = useState('');
-  const [location_found, setLocationFound] = useState('');
-  const [date_found, setDateFound] = useState('');
+  const [location_lost, setLocationLost] = useState('');
+  const [date_lost, setDateLost] = useState('');
   const currentDate = new Date().toISOString().split('T')[0];
-  const [location_submitted, setLocationSubmitted] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    const checkCookiesAvailability = () => {
+      const areCookiesAvailable = document.cookie.length > 0;
+      if (!areCookiesAvailable) {
+        navigate('/');
+      }
+    };
+
+    checkCookiesAvailability();
+  }, [navigate]);
 
   const handleBack = () => {
     window.location.href = '/user/home#user-activity-section';
@@ -29,17 +39,14 @@ function InsertLost() {
     setDescription(e.target.value);
   };
 
-  const handleLocationFoundChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
-    setLocationFound(e.target.value);
+  const handleLocationLostChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
+    setLocationLost(e.target.value);
   };
 
-  const handleDateFoundChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
-    setDateFound(e.target.value);
+  const handleDateLostChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
+    setDateLost(e.target.value);
   };
 
-  const handleLocationSubmittedChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
-    setLocationSubmitted(e.target.value);
-  };
 
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
@@ -51,9 +58,8 @@ function InsertLost() {
     const requestData = {
       item_name,
       description,
-      location_found,
-      date_found,
-      location_submitted,
+      location_lost,
+      date_lost,
       user_id,
     };
 
@@ -83,8 +89,8 @@ function InsertLost() {
     // Clear the input fields after submission
     setItemName('');
     setDescription('');
-    setLocationFound('');
-    setDateFound('');
+    setLocationLost('');
+    setDateLost('');
     window.location.href = '/user/home';
   };
 
@@ -128,25 +134,23 @@ function InsertLost() {
             onChange={handleDescriptionChange}
             className="w-full px-4 py-2 rounded border"
           ></textarea>
+
         </div>
+
         <div className="mb-4">
-          <label htmlFor="locationFound" className="block font-semibold mb-1">
+          <label htmlFor="Location Lost" className="block font-semibold mb-1">
             Location Lost
           </label>
-          <select
-            id="location_found"
-            name="location_found"
-            onChange={handleLocationFoundChange}
+          <textarea
+            id="location_lost"
+            name="location_lost"
+            value={location_lost}
+            onChange={handleLocationLostChange}
             className="w-full px-4 py-2 rounded border"
-          >
-            <option value="">Select Location</option>
-            {locations.map((location) => (
-              <option key={location} value={location}>
-                {location}
-              </option>
-            ))}
-          </select>
+          ></textarea>
+
         </div>
+
 
         <div className="mb-4">
           <label htmlFor="dateFound" className="block font-semibold mb-1">
@@ -154,10 +158,10 @@ function InsertLost() {
           </label>
           <input
             type="date"
-            id="date_found"
-            name="date_found"
-            value={date_found}
-            onChange={handleDateFoundChange}
+            id="date_lost"
+            name="date_lost"
+            value={date_lost}
+            onChange={handleDateLostChange}
             className="w-full px-4 py-2 rounded border"
             max={currentDate}
           />
@@ -186,6 +190,7 @@ function InsertLost() {
     </div>
 
 {/* Footer Section */}
+
 <div>
     <Footer />
   </div>

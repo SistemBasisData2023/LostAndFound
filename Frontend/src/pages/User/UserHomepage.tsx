@@ -32,7 +32,17 @@ function Homepage() {
   }, []);
   */
 
+  useEffect(() => {
+    const checkCookiesAvailability = () => {
+      const areCookiesAvailable = document.cookie.length > 0;
+      if (!areCookiesAvailable) {
+        navigate('/');
+      }
+    };
 
+    checkCookiesAvailability();
+  }, [navigate]);
+  
   //========= HANDLING CONST =========//
   const handleUserListFound = () => {
     navigate('/user/listfound');

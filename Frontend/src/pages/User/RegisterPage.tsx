@@ -54,6 +54,7 @@ function RegisterPage() {
     setEmail('');
     setPassword('');
     setIsRegistered(true);
+    
   };
 
   return (
