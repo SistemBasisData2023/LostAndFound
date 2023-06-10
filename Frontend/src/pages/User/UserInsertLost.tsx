@@ -131,7 +131,7 @@ function InsertLost() {
         </div>
         <div className="mb-4">
           <label htmlFor="locationFound" className="block font-semibold mb-1">
-            Location Found
+            Location Lost
           </label>
           <select
             id="location_found"
@@ -150,7 +150,7 @@ function InsertLost() {
 
         <div className="mb-4">
           <label htmlFor="dateFound" className="block font-semibold mb-1">
-            Date Found
+            Date Lost
           </label>
           <input
             type="date"
@@ -161,25 +161,6 @@ function InsertLost() {
             className="w-full px-4 py-2 rounded border"
             max={currentDate}
           />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="locationSubmitted" className="block font-semibold mb-1">
-            Location Submitted
-          </label>
-          <select
-            id="locationSubmitted"
-            name="locationSubmitted"
-            value={location_submitted}
-            onChange={handleLocationSubmittedChange}
-            className="w-full px-4 py-2 rounded border"
-          >
-            <option value="">Select Location</option>
-            {locations.map((location) => (
-              <option key={location} value={location}>
-                {location}
-              </option>
-            ))}
-          </select>
         </div>
             
             <div className="flex justify-between pt-8">
