@@ -1,21 +1,31 @@
-import React from "react";
-
-
+import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import axios from 'axios';
 
 
 function Navbar() {
+  const navigate = useNavigate();
 
   const handleLogout = () => {
-    // Clear the session storage or local storage flag
-    sessionStorage.removeItem("isLoggedIn"); // Or localStorage.removeItem("isLoggedIn")
-    // Redirect to the login page
+    // Remove user_id from localStorage
     localStorage.removeItem('user_id');
-    window.location.href = '/login';
+  
+    // Clear cookies
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i];
+      const eqPos = cookie.indexOf('=');
+      const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+      document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/`;
+    }
+  
+    // Navigate to '/login'
+    navigate('/login');
   };
   
   
   return (
-    <nav className="bg-[#F9F3E6] shadow-grey shadow-md rounded-b-2xl w-screen fixed">
+    <nav className="bg-[#F9F3E6] shadow-grey shadow-md rounded-b-2xl w-screen sticky">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">

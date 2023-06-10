@@ -24,6 +24,10 @@ import GetUser from './pages/Admin/AdminGetUser';
 import AdminListFound from './pages/Admin/AdminListFound';
 import AdminListLost from './pages/Admin/AdminListLost';
 import InsertLost from './pages/User/UserInsertLost';
+import UserProfile from './pages/User/UserProfile';
+import AdminProfile from './pages/Admin/AdminProfile';
+
+
 
 
 
@@ -37,6 +41,7 @@ function App() {
       
        <Route path="/" element={<LandingPage /> } />
        <Route path="/login" element={<LandingLogin />} />
+ 
 
        {/* USER PAGE */}
        <Route path="/user/login" element={<LoginUser />} />
@@ -46,12 +51,12 @@ function App() {
         <Route path="/user/insertfound" element={<InsertFound /> } />
        <Route path="/user/listlost" element={<ListLost />} />
        <Route path="/user/listfound" element={<ListFound />} />
-       <Route path="/user/profile" element={<ListFound />} />
+       <Route path="/user/profile" element={<UserProfile />} />
 
       {/* ADMIN PAGE */}
        <Route path="/admin/login" element={<LoginAdmin />} />
        <Route path="/admin/home" element={<AdmHomepage />} />
-       <Route path="/user/profile" element={<ListFound />} />
+       <Route path="/admin/profile" element={<AdminProfile />} />
        <Route path="/admin/getuser" element={<GetUser />} /> 
       <Route path="/admin/getfound" element={<AdminListFound />} />
       <Route path="/admin/getlost" element={<AdminListLost />} />

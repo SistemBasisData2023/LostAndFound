@@ -22,7 +22,7 @@ const Footer = () => {
                         href={`https://www.github.com/${member.github}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-gray-300 hover:text-gray-500 text-lg md:text-2xl font-semibold"
+                        className="text-gray-300 hover:text-white text-lg md:text-2xl font-semibold"
                       >
                         {member.nickname}
                       </a>

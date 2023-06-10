@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 function LandingLogin() {
   const navigate = useNavigate();
+
 
   const handleUserLogin = () => {
     navigate("/user/login");
@@ -13,12 +15,8 @@ function LandingLogin() {
 
 
   return (
-    <div className="relative">
-      <img
-        src="../src/assets/LPpolos.png"
-        alt="loginUserPage"
-        className="absolute top-0 left-0 w-screen h-screen object-cover"
-      />
+    <div className="relative flex flex-col items-start justify-center h-screen bg-[#F9F3E6]">
+      <img src="../src/assets/landingduduk.png" alt="landing" className="absolute bottom-0 right-0 max-w-[50%] h-auto" />
       <div className="flex flex-col gap-7 absolute top-[60px] left-[160px]">
         <div>
           <img 
@@ -27,6 +25,8 @@ function LandingLogin() {
           className="flex h-[370px]" 
           />
         </div>
+
+        {/*login form container*/}
         <div className="container w-[460px] h-[370px] bg-[#C2D4D8] ml-[600px] -mt-[400px] rounded-2xl shadow-md">
           <div className="flex flex-col gap-16 justify-center items-center h-full">
             <button onClick={handleUserLogin} className="px-2 py-2 bg-gray-700 hover:bg-gray-400 text-white rounded-full w-[200px] h-[50px]">
@@ -46,6 +46,7 @@ function LandingLogin() {
           </div>
         </div>
       </div>
+      
     </div>
   );
 }

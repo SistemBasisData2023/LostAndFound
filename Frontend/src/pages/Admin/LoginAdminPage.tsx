@@ -1,12 +1,15 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
+import axios from 'axios';
 
 
 
 function LoginAdmin() { const [username, setUsername] = useState('');
 const [password, setPassword] = useState('');
-const [loginError] = useState('');
+const [loginError, setLoginError] = useState('');
 
+
+const navigate = useNavigate();
 
 const handleUsernameChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
   setUsername(e.target.value);
@@ -17,7 +20,36 @@ const handlePasswordChange = (e: { target: { value: React.SetStateAction<string>
 };
 
 const handleSubmit = async (e: { preventDefault: () => void; }) => {
+  e.preventDefault();
+
+  try {
+    const response = await axios.post("http://localhost:9000/admin/login", {
+      username,
+      password
+    });
+
+    // Assuming the server responds with a token or user object
+    const user = response.data;
+
+    // Login successful
+    console.log("Login successful");
+    // Extract user_id and store it in localStorage
+    localStorage.setItem("user_id", user.user_id);
+    setLoginError("");
+    
+    // Reset form fields
+    setUsername("");
+    setPassword("");
+
+    // Redirect to /user/home
+    navigate('/admin/home');
+  } catch (error) {
+    // Failed login
+    console.error(error);
+    setLoginError("Invalid username or password");
+  }
 };
+
 
   
     return (

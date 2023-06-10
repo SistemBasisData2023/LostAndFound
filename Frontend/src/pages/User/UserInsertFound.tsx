@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Navbar from '../../component/Nvgbar';
+import Footer from '../../component/FooterPage';
 
 
 
@@ -16,6 +18,10 @@ function InsertFound() {
   const [location_submitted, setLocationSubmitted] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+
+  const handleBack = () => {
+    window.location.href = '/user/home';
+  };
 
   const handleItemNameChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
     setItemName(e.target.value);
@@ -87,11 +93,22 @@ function InsertFound() {
 
   return (
     <>
-    <div className="min-h-screen flex items-center justify-center bg-[#E5E5E5]">
+    <div>
+      <Navbar /> 
+    <div 
+    id="top-section"
+    className="min-h-screen flex items-center justify-center bg-[#E5E5E5] p-10">
     <div className="container mx-auto py-8">
-        <img src="../src/assets/founditem.png" alt="undraw-Add-user-re-ipe3" className="mx-auto" />
-      <form onSubmit={handleSubmit} className="max-w-md mx-auto my-32">
-        <div className="mb-4">
+    <div className="flex flex-col md:flex-row">
+
+    <div className="md:w-1/2">
+            <img src="../src/assets/founditem.png" alt="title" className="mx-auto" />
+            <img src="../src/assets/reportfoundiconnobg.png"></img>
+          </div>
+
+      <form onSubmit={handleSubmit} className="max-w-md mx-auto my-10 md:w-1/2 md:mr-8 bg-[#444C5C] rounded-lg shadow-lg px-8 py-16">
+        <div className="mb-4 -mt-8 items-center">
+        <img src="../src/assets/topper.png" alt="Your Image" className="mx-auto h-8 w-100% mb-12" />
           <label htmlFor="item_name" className="block font-semibold mb-1">
             Item Name
           </label>
@@ -169,14 +186,33 @@ function InsertFound() {
             ))}
           </select>
         </div>
-        <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
-          Submit
-        </button>
-      </form>
+
+
+        <div className="flex justify-between pt-8">
+              <button 
+              onClick={handleBack}
+              type="button" 
+              className="bg-[#E5E5E5] text-gray-900 py-2 px-4 rounded hover:bg-gray-500 hover:text-white">
+                Back
+              </button>
+              <button 
+              type="submit" 
+              className="bg-[#E5E5E5] text-gray-900 py-2 px-4 rounded hover:bg-green-400 hover:text-white">
+                Submit
+              </button>
+            </div>
+          </form>
+      </div>
+
       {isSubmitted && (
         <p className="text-green-500 mt-4">Form submitted successfully!</p>
       )}
     </div>
+    </div>
+    {/* Footer Section */}
+<div>
+    <Footer />
+  </div>
     </div>
     </>
   );

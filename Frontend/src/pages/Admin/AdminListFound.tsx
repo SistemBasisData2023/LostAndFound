@@ -47,7 +47,7 @@ const getTodos= async () => {
 
    
 return (
-  <div className="bg-[#C2D4D8] min-h-screen flex flex-col items-center">
+  <div className="bg-[#C2D4D8] min-h-screen flex flex-col items-center py-12">
     <img src="../src/assets/founditemlist.png" alt="userlisttitle" className="mt-8 mb-8 mx-4 items-end self-end" />
     <div className="flex-grow w-screen px-2 md:px-16">
       <div className="overflow-x-auto">
