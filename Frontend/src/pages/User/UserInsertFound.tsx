@@ -148,22 +148,17 @@ function InsertFound() {
 
         <div className="mb-4">
           <label htmlFor="locationFound" className="block font-semibold mb-1">
-            Location Lost
+            Location Found
           </label>
-          <select
+          <input
+            type='text'
             id="location_found"
             name="location_found"
             value={location_found}
             onChange={handleLocationFoundChange}
             className="w-full px-4 py-2 rounded border"
           >
-            <option value="">Select Location</option>
-            {locations.map((location) => (
-              <option key={location} value={location}>
-                {location}
-              </option>
-            ))}
-          </select>
+          </input>
         </div>
 
         <div className="mb-4">

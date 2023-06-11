@@ -23,7 +23,7 @@ import AdminListLost from './pages/Admin/AdminListLost';
 import InsertLost from './pages/User/UserInsertLost';
 import UserProfile from './pages/User/UserProfile';
 import AdminProfile from './pages/Admin/AdminProfile';
-
+import ExploreMore from './pages/ExploreMore';
 
 function App() {
 
@@ -46,6 +46,7 @@ function App() {
        <Route path="/user/listlost" element={<ListLost />} />
        <Route path="/user/listfound" element={<ListFound />} />
        <Route path="/user/profile" element={<UserProfile />} />
+       <Route path="/user/explore" element={<ExploreMore />} />
 
       {/* ADMIN PAGE */}
        <Route path="/admin/login" element={<LoginAdmin />} />

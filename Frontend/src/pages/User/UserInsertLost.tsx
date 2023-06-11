@@ -143,20 +143,15 @@ function InsertLost() {
           <label htmlFor="locationFound" className="block font-semibold mb-1">
             Location Lost
           </label>
-          <select
+          <input
+            type='text'
             id="location_found"
             name="location_found"
             value={location_lost}
             onChange={handleLocationLostChange}
             className="w-full px-4 py-2 rounded border"
           >
-            <option value="">Select Location</option>
-            {locations.map((location) => (
-              <option key={location} value={location}>
-                {location}
-              </option>
-            ))}
-          </select>
+          </input>
         </div>
 
         <div className="mb-4">

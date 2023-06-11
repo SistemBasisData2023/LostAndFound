@@ -122,7 +122,9 @@ const [username, setUsername] = useState('');
         </div>
 
         <div className="w-full flex justify-center mt-4">
-          <button className="px-4 py-2 bg-[#CF9D95] w-72 h-12 lg:ml-96 hover:bg-gray-400 text-white rounded-full z-10">
+          <button 
+          onClick={() => navigate('/user/explore')}
+          className="px-4 py-2 bg-[#CF9D95] w-72 h-12 lg:ml-96 hover:bg-gray-400 text-white rounded-full z-10">
             EXPLORE MORE
           </button>
         </div>
