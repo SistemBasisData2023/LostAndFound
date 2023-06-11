@@ -1,4 +1,5 @@
 # LostAndFound
+## Project Description
 Lost and Found is a web application that aims to help people find their lost items. It provides a platform for users to report lost items, post found items, and connect with each other to facilitate the recovery of lost belongings. Lost and Found Website is a SQL-based project, mainly using PostgreSQL for the database. The website provides a simple and user-friendly interface for users to interact with the database and manage their lost and found items.
 
 This project is made by O15 group for the final project of Database System course from the univeristy. 
