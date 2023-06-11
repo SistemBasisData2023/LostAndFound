@@ -48,7 +48,7 @@ function Navbar() {
               FOUND
             </Link>
             <Link 
-            to="/user/insertfound"
+            to="/user/insertlost"
               className="text-gray-700 hover:bg-[#D4A5A5] hover:text-white px-3 py-2 rounded-md text-sm font-medium"
             >
               LOST

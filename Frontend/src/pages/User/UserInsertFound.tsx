@@ -163,12 +163,12 @@ function InsertFound() {
 
         <div className="mb-4">
           <label htmlFor="dateFound" className="block font-semibold mb-1">
-            Date Lost
+            Date Found
           </label>
           <input
             type="date"
-            id="date_lost"
-            name="date_lost"
+            id="date_found"
+            name="date_found"
             value={date_found}
             onChange={handleDateFoundChange}
             className="w-full px-4 py-2 rounded border"
