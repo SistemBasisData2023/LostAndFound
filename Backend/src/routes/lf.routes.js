@@ -36,8 +36,11 @@ router.post('/user/insertfound', lfController.addFoundItem);
 
 //=======General Routes=======//
 // Define your general routes here
+// Get all lost items
 router.post('/getlost', lfController.getAllLost);
+// Get all found items
 router.post('/getfound', lfController.getAllFound);
+// Get user profile
 router.get('/profile', lfController.showProfile);
 
 

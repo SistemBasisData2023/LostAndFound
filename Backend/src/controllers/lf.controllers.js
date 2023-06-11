@@ -1,6 +1,18 @@
+/**
+ * @file index.js
+ * @description API endpoints for user authentication and data manipulation.
+ * @module controllers
+ * @requires ../models/models
+ */
+
 const db = require('../models/models');
 
-// Login as admin
+/**
+ * @function loginAdmin
+ * @description Log in as an admin.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ */
 async function loginAdmin(req, res) {
   const { username, password } = req.body;
   try {
@@ -15,7 +27,12 @@ async function loginAdmin(req, res) {
   }
 }
 
-// Login a user
+/**
+ * @function loginUser
+ * @description Log in a user.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ */
 async function loginUser(req, res) {
   const { username, password } = req.body;
 
@@ -30,16 +47,29 @@ async function loginUser(req, res) {
     res.status(500).send('Internal Server Error');
   }
 }
+
+/**
+ * @function logoutUser
+ * @description Log out a user.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ */
 async function logoutUser(req, res) {
   try {
     req.session.destroy();
-    // 
     res.send('User logged out successfully');
   } catch (err) {
     console.error(err);
     res.status(500).send('Internal Server Error');
   }
 }
+
+/**
+ * @function addLostItem
+ * @description Add a lost item.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ */
 async function addLostItem(req, res) {
   const { item_name, description, location_lost, date_lost, user_id } = req.body;
   try {
@@ -51,10 +81,15 @@ async function addLostItem(req, res) {
   }
 }
 
-// Add a found item
+/**
+ * @function addFoundItem
+ * @description Add a found item.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ */
 async function addFoundItem(req, res) {
   const { item_name, description, location_found, date_found, location_submitted, user_id } = req.body;
-  
+
   try {
     const data = await db.addFoundItem(item_name, description, location_found, date_found, user_id, location_submitted);
     res.send(data);
@@ -64,7 +99,12 @@ async function addFoundItem(req, res) {
   }
 }
 
-// Show user's profile
+/**
+ * @function showProfile
+ * @description Show user's profile.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ */
 async function showProfile(req, res) {
   const user_id = req.session.user.user_id;
   try {
@@ -76,8 +116,12 @@ async function showProfile(req, res) {
   }
 }
 
-
-// Get data from the 'users' table
+/**
+ * @function getAllUser
+ * @description Get data from the 'users' table.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ */
 async function getAllUser(req, res) {
   try {
     const data = await db.getAllUser();
@@ -88,7 +132,12 @@ async function getAllUser(req, res) {
   }
 }
 
-// Get data from the 'lost' table
+/**
+ * @function getAllLost
+ * @description Get data from the 'lost' table.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ */
 async function getAllLost(req, res) {
   try {
     const data = await db.getAllLost();
@@ -99,7 +148,12 @@ async function getAllLost(req, res) {
   }
 }
 
-// Get data from the 'found' table
+/**
+ * @function getAllFound
+ * @description Get data from the 'found' table.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ */
 async function getAllFound(req, res) {
   try {
     const data = await db.getAllFound();
@@ -110,7 +164,12 @@ async function getAllFound(req, res) {
   }
 }
 
-// Register a new user
+/**
+ * @function registerUser
+ * @description Register a new user.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ */
 async function registerUser(req, res) {
   const { username, email, password } = req.body;
   try {
@@ -125,7 +184,12 @@ async function registerUser(req, res) {
   }
 }
 
-// Delete a lost item
+/**
+ * @function deleteLostItem
+ * @description Delete a lost item.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ */
 async function deleteLostItem(req, res) {
   const { lost_item_id } = req.body;
   try {
@@ -137,7 +201,12 @@ async function deleteLostItem(req, res) {
   }
 }
 
-// Delete a found item
+/**
+ * @function deleteFoundItem
+ * @description Delete a found item.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ */
 async function deleteFoundItem(req, res) {
   const { found_item_id } = req.body;
   try {
@@ -148,7 +217,6 @@ async function deleteFoundItem(req, res) {
     res.status(500).send('Internal Server Error');
   }
 }
-
 
 module.exports = {
   loginAdmin,
