@@ -1,7 +1,7 @@
-#LostAndFound#
+# LostAndFound
 Lost and Found is a web application that aims to help people find their lost items. It provides a platform for users to report lost items, post found items, and connect with each other to facilitate the recovery of lost belongings.
 
-##Features##
+## Features
 __Admin__
 -View Database of Users: As an admin, you can access and view the database of user information, including their personal details and contact information.
 -Manage Lost Items: Admins have the ability to view and manage the database of lost items. This includes adding new lost items, updating existing items, and deleting entries when necessary.
