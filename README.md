@@ -67,3 +67,8 @@ The website relies on a SQL database to store and manage user and admin accounts
 7. Run the database migration script to set up the required tables and data: npm run migrate.
 8. Start the web server by running npm start.
 9. Access the website in your browser by navigating to http://localhost:9000.
+
+## References and Credits
+https://github.com/bit-by-bits/Lost-and-Found
+
+https://github.com/lilla-nemeth/lost-and-found
