@@ -50,9 +50,9 @@ Users can register on the platform by creating an account. This allows them to s
 ## Tools Used
 The Lost and Found Website is built using the following technologies:
 
-Front-end: HTML, CSS, React, Vind, Tailwind
-Back-end: PostgreSQL, NodeJS, Express
-Database: SQL (Structured Query Language)
++ Front-end: HTML, CSS, React, Vind, Tailwind
++ Back-end: PostgreSQL, NodeJS, Express
++ Database: SQL (Structured Query Language)
 
 The website relies on a SQL database to store and manage user and admin accounts, lost and found items, and other relevant information
 
