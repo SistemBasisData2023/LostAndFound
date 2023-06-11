@@ -42,6 +42,7 @@ const handleSubmit = async (e: { preventDefault: () => void; }) => {
     localStorage.setItem("username", user.username);
     localStorage.setItem("email", user.email);
     localStorage.setItem("password", user.password);
+    localStorage.setItem("role", user.role);
     
     document.cookie = `user_id=${user.user_id}; path=/`;
     document.cookie = `username=${user.username}; path=/`;

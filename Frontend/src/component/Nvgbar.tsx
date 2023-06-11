@@ -7,6 +7,11 @@ function Navbar() {
   const handleLogout = () => {
     // Remove user_id from localStorage
     localStorage.removeItem('user_id');
+    localStorage.removeItem('role');
+    localStorage.removeItem('username');
+    localStorage.removeItem('password');
+    localStorage.removeItem('email');
+    localStorage.removeItem('user');
   
     // Clear cookies
     const cookies = document.cookie.split(';');

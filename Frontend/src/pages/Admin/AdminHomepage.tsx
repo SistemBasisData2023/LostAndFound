@@ -10,8 +10,12 @@ function AdmHomepage() {
   useEffect(() => {
     const checkCookiesAvailability = () => {
       const areCookiesAvailable = document.cookie.length > 0;
-      if (!areCookiesAvailable) {
+      if (!areCookiesAvailable ) {
         navigate('/');
+      }
+      if (localStorage.getItem('role') !== 'admin') {
+        navigate('/');
+        localStorage.clear();
       }
     };
 

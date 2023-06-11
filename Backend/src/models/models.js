@@ -21,7 +21,7 @@ async function loginAdmin(username, password, req, res) {
     // Create session and store user data
     req.session.admin = admin;
     console.log(req.session.admin);
-    res.send('Admin logged in successfully');
+    res.send(admin);
   } catch (err) {
     console.error(err);
     res.status(404).send('Invalid username or password');
