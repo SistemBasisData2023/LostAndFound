@@ -68,7 +68,7 @@ The website relies on a SQL database to store and manage user and admin accounts
 8. Start the web server by running npm start.
 9. Access the website in your browser by navigating to http://localhost:9000.
 
-## References and Credits
+## References
 https://github.com/bit-by-bits/Lost-and-Found
 
 https://github.com/lilla-nemeth/lost-and-found
